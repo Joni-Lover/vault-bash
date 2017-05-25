@@ -41,6 +41,21 @@ function getAll {
   done
 }
 
+function copy {
+  local src="${1}"
+  local dst="${2}"
+  if [ "${src: -1}" == '/' ] && [ "${dst: -1}" == '/' ]; then
+    mkdir -p "${dst}"
+    cp -r "${src}"/* "${dst}"/
+  elif [ "${src: -1}" != '/' ] && [ "${dst: -1}" != '/' ]; then
+    mkdir -p "${dst%/*}"
+    cp -r "${src}" "${dst}"
+  else
+    echo "Error, pass vaild sorce and destination path:"
+    echo "${src} - ${dst}"
+  fi
+}
+
 function edit {
   local path="${1}"
   if [ "${path: -1}" == '/' ]; then

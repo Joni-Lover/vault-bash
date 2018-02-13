@@ -5,7 +5,7 @@ set -e
 PARAM="${1}"
 vault_path=${2:-'secret/'}
 
-if [ $# -ne 1 ]
+if [ $# -lt 1 ]
 then
   echo "Usage:"
   echo "$0 get-all"

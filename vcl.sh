@@ -29,7 +29,7 @@ done
 
 function getAll {
   local path="${1}"
-  for i in `vault list "${path}" | grep -Ev 'Ke|-|^$'`;
+  for i in `vault list "${path}" | grep -Ev 'Ke|----|^$'`;
   do
     if [ "${i: -1}" == '/' ]; then
       new_path="${path}${i}"
